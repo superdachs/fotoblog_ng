@@ -1,0 +1,22 @@
+{% extends "core/base.phtml" %}
+{% block navigation_bar %}
+  <a class="navigation_bar_entry" href="/">home</a>
+  {% for category in categories %}
+    <a class="navigation_bar_entry" href="/{{ category.title }}">{{ category.title }}</a>
+  {% endfor %}
+{% endblock %}
+{% block content %}
+  <div id='content_container' class='content'>
+  {% for content_entry in content_entries %}
+    <div class='content_entry'>
+    <h2>{{ content_entry.title }}</h2>
+    <h3>{{ content_entry.date_published }} {{ content_entry.author }} </h3>
+    {{ content_entry.text|safe }}
+    {% for image in content_entry.images %}
+      <img style="max-width: 100px; max-height: 100px;" src="{{ image.image.url }}"/><br/>
+      {{ image }}<br/>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  </div>
+{% endblock %}

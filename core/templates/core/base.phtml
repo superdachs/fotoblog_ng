@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ name }}</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="test" />
+    <link href='http://fonts.googleapis.com/css?family=Cinzel:400,700|Exo+2:800italic,600,300,400italic,600italic,400,800,300italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/media/layout.css">
+    <link href='http://fonts.googleapis.com/css?family=Halant:300,400,500,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="/media/jquery.js"></script>
+    <script type="text/javascript" src="jquery.baseline.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $("img").each(function() {
+          var height = $(this).height();
+          var div = Math.floor(height/24);
+          var rem = (height/24) - div;
+          var gap = 24 - (24 * rem);
+          $(this).css('margin-bottom', gap + "px");
+        });
+      });
+    </script>
+<!--    <script>
+      $( document ).ready(function() {
+
+        $('span').each(function() {
+          $(this).css('line-height', '24px');
+        });
+
+        $('img').each(function() {
+          $(this).css('width', '100%');
+          var width = $(this).width(),
+              height = $(this).height();
+          $(this).css('width', width + 'px');
+
+          var nheight = Math.floor(height/24);
+              nheight = nheight * 24;
+
+
+          $(this).css('height', nheight);
+ 
+
+        });
+      });
+    </script> -->
+  </head>
+  <body>
+
+  <div id=page>
+  <div id=inners>
+
+  <div id=badge>
+  </div>
+
+    <!-- HEADER -->
+    <div id='header_logo'>
+      <h1>Dachsbau Alpha</h1>
+      <h2>
+Rara temporum felicitas, ubi quae velis sentire et quae sentias dicere licet.
+</h2>
+      <hr/>
+      <p id='header_nav'>{% block navigation_bar %}{% endblock %}</p>
+      <p id='header_date'>{% now "j. F Y" %}</p> 
+      <hr/>
+    </div>
+
+
+    {% block content %}{% endblock %}
+
+  </div>
+  </div>
+  </body>
+</html>  
